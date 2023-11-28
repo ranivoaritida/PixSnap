@@ -22,9 +22,9 @@ const SignupForm = () => {
 
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
-  const { mutateAsync: createUserAccount, isLoading: isCreatingAccount} = useCreateUserAccount();
+  const { mutateAsync: createUserAccount, isPending: isCreatingAccount} = useCreateUserAccount();
 
-  const { mutateAsync: signInAccount, isLoading: isSignInAccount } = useSignInAccount();
+  const { mutateAsync: signInAccount, isPending: isSignInAccount } = useSignInAccount();
 
   const navigate = useNavigate();
 
@@ -78,7 +78,7 @@ const SignupForm = () => {
 
         <h2 className="h3-bold md:h2-blod pt-5 sm:pt-12"> Create a new account</h2>
 
-        <p className="text-light-3 small-medium md:base-regular">To use Snapkely, please enter your details</p>
+        <p className="text-light-3 small-medium md:base-regular mt-2">To use Snapkely, please enter your details</p>
       
 
         <form onSubmit={form.handleSubmit(onSubmit)} className=" flex flex-col gap-5 w-full mt-4">

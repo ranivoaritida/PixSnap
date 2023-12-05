@@ -178,13 +178,13 @@ export async function deleteFile(fileId: string){
 
 export async function getRecentPosts(){
     
-    const post = await databases.listDocuments(
+    const posts = await databases.listDocuments(
         appwriteConfig.databaseId,
         appwriteConfig.postCollectionId,
-        [Query.orderDesc(`$createAt`),Query.limit(20)]
+        [Query.orderDesc(`$createdAt`),Query.limit(20)]
     )
 
-    if(!post) throw Error;
+    if(!posts) throw Error;
 
-    return post;
+    return posts;
 }

@@ -135,7 +135,7 @@ export async function createPost (post : INewPost){
         console.log(error);
     }
 }
-export async function getFilePreview(fileId: string){
+export  function getFilePreview(fileId: string){
     try {
         const fileUrl = storage.getFilePreview(
             appwriteConfig.storageId,

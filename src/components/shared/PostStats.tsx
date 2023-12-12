@@ -48,8 +48,6 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
     }
     const handleSavePost = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         e.stopPropagation;
-
-        
         
         if(savedPostRecord){
             setIsSaved(false);

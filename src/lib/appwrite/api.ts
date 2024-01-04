@@ -328,7 +328,7 @@ export async function deletePost(postId:string, imageId: string){
 }
 
 export async function getInfinitePosts ({pageParam} : {pageParam: number}){
-  const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(10)]
+  const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(2)]
 
   if(pageParam){
     // (Query.cursorAfter) if i am in page 2 skip the 10 first and give the 10 next
@@ -348,6 +348,28 @@ export async function getInfinitePosts ({pageParam} : {pageParam: number}){
 
   } catch (error) {
     console.log(error)
+  }
+}
+
+export async  function getInfiniteUsers({pageParam}: {pageParam: number}){
+
+  const queries = [Query.limit(20)];
+  if(pageParam){
+    queries.push(Query.cursorAfter(pageParam.toString()));
+  }
+  try {
+    const users = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      queries,
+    );
+
+    if(!users) throw Error;
+
+    return users;
+
+  } catch (error) {
+    console.log(error);
   }
 }
 

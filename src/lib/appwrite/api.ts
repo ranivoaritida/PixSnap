@@ -390,3 +390,15 @@ export async function searchPosts (searchTerm: string){
     console.log(error)
   }
 }
+
+export async function getUsers() {
+  const posts = await databases.listDocuments(
+    appwriteConfig.databaseId,
+    appwriteConfig.userCollectionId,
+    [Query.orderDesc(`$createdAt`), Query.limit(10)]
+  );
+
+  if (!posts) throw Error;
+
+  return posts;
+}

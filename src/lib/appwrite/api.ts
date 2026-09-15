@@ -370,9 +370,9 @@ export async  function getInfiniteUsers({pageParam}: {pageParam: number}){
 
   } catch (error) {
     console.log(error);
+    throw error;
   }
 }
-
 export async function searchPosts (searchTerm: string){
   
   try {
